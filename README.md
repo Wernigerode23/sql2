@@ -18,7 +18,8 @@ join city c2 on c2.city_id = a.city_id
 group by s.staff_id, c2.city_id 
 having COUNT(c.customer_id) > 300;
 ```
-![12-4-1](./hw-12-4/12-4-1.png)
+![image](https://github.com/Wernigerode23/sql2/assets/153208339/ee0e23ba-0658-41d4-9c00-4497f4da0f84)
+
 
 ---
 
@@ -32,7 +33,8 @@ where f.`length`  >
   (select AVG(`length`) 
   from film);   
 ```
-![12-4-2](./hw-12-4/12-4-2.png)
+![image](https://github.com/Wernigerode23/sql2/assets/153208339/5d5c4011-c876-466a-bad2-9efcd38ae449)
+
 
 ---
 
@@ -48,27 +50,7 @@ from (
 order by t1.amount_of_payments desc  
 limit 1;
 ```
-![12-4-3](./hw-12-4/12-4-3.png)
+![image](https://github.com/Wernigerode23/sql2/assets/153208339/94d65b4d-590d-4a77-898c-f286422307c1)
 
----
 
-## Дополнительные задания (со звёздочкой*)
-Эти задания дополнительные, то есть не обязательные к выполнению, и никак не повлияют на получение вами зачёта по этому домашнему заданию. Вы можете их выполнить, если хотите глубже шире разобраться в материале.
 
-### Задание 4*
-
-Посчитайте количество продаж, выполненных каждым продавцом. Добавьте вычисляемую колонку «Премия». Если количество продаж превышает 8000, то значение в колонке будет «Да», иначе должно быть значение «Нет».
-```sql
-select t1.cp count_of_payments, t1.staff_id staff_id,
-  case 
-  	when t1.cp > 8000 then 'Да'
-  	else 'Нет'
-  end as bonus
-from (
-  select COUNT(payment_id) cp, staff_id  
-  from sakila.payment p 
-  group by staff_id ) t1;
-```
-![12-4-4](./hw-12-4/12-4-4.png)
-
----
